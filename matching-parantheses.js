@@ -4,8 +4,8 @@ function validParentheses(s){
   const stack = new Stack();
 
   let index = 0;
-  for(let c of s){
 
+  for(let c of s){
     if(c === '('){
       stack.push(index);
     } else {
@@ -24,11 +24,13 @@ function validParentheses(s){
     console.log(`Character at index ${stack.pop()} is an extra opening parentheses.`);
     return false;
   } else {
+    console.log('The parentheses are balanced.');
     return true;
   }
 }
 module.exports = validParentheses;
 
+validParentheses('()');
 validParentheses('(()');
 validParentheses('(()))');
 validParentheses('( 8 + 5 ) + ( 9 + 5 ))');
