@@ -1,5 +1,5 @@
 const Stack = require('./stack');
-const { peek } = require('./stack-helpers');
+const { peek } = require('./stack-helper');
 
 function sort(stack){
   const aux = new Stack();
