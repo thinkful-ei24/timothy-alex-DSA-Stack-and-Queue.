@@ -11,7 +11,7 @@ function validParentheses(s){
     } else {
       if(c === ')'){
         if(stack.isEmpty()){
-          console.log(`Character at index ${index} is an invalid closing parentheses.`);
+          console.log(`Character at index ${index} is an invalid closing parentheses`);
           return false;
         } else {
           stack.pop();
@@ -21,16 +21,18 @@ function validParentheses(s){
     index++;
   }
   if(!stack.isEmpty()){
-    console.log(`Character at index ${stack.pop()} is an extra opening parentheses.`);
+    console.log(`Character at index ${stack.pop()} is an extra opening parentheses`);
     return false;
   } else {
-    console.log('The parentheses are balanced.');
+    console.log('The parentheses are balanced');
     return true;
   }
 }
 module.exports = validParentheses;
 
-validParentheses('()');
-validParentheses('(()');
-validParentheses('(()))');
-validParentheses('( 8 + 5 ) + ( 9 + 5 ))');
+if(require.main === module){
+  validParentheses('()');
+  validParentheses('(()');
+  validParentheses('(()))');
+  validParentheses('( 8 + 5 ) + ( 9 + 5 ))');
+}
