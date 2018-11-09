@@ -1,21 +1,23 @@
+const { peek, display } = require('./stack-helper');
+
 class Node {
-  constructor(value, next){
+  constructor(value, next) {
     this.value = value;
     this.next = next;
   }
 }
 
 class Stack {
-  constructor(){
+  constructor() {
     this.top = null;
   }
 
-  push(value){
+  push(value) {
     this.top = new Node(value, this.top);
   }
 
-  pop(){
-    if(!this.top) {
+  pop() {
+    if (!this.top) {
       console.log('The stack is empty');
       return null;
     }
@@ -24,13 +26,13 @@ class Stack {
     return value;
   }
 
-  isEmpty(){
+  isEmpty() {
     return !this.top;
   }
 
-  print(){
+  print() {
     let temp = this.top;
-    while(temp){
+    while (temp) {
       console.log(temp.value);
       temp = temp.next;
     }
@@ -39,18 +41,20 @@ class Stack {
 
 module.exports = Stack;
 
-function main(){
+function main() {
   const starTrek = new Stack();
-  [ 'Kirk', 'Spock', 'McCoy', 'Scotty' ].forEach(person => {
+  ['Kirk', 'Spock', 'McCoy', 'Scotty'].forEach(person => {
     starTrek.push(person);
   });
-  starTrek.print();
+  display(starTrek);
   starTrek.pop();
   starTrek.pop();
   console.log('\n');
-  starTrek.print();
+  // starTrek.print();
+  display(starTrek);
+  console.log(peek(starTrek));
 }
 
-if(require.main === module){
+if (require.main === module) {
   main();
 }
