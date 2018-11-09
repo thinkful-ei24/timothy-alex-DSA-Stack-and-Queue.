@@ -1,38 +1,34 @@
 const Stack = require('./stack');
 
-/**
- *   '(9+4)' -> valid
- *  '(9+4 / (5+3)' -> error, report location 
- *  '(9+4' -> error, report location of close ')' 
- * 
- *   (
-*    9
-      +
-      4
- *   )
+function validParentheses(s){
+  const stack = new Stack();
 
- ((()))
- * (
+  let index = 0;
+  for(let c of s){
 
- )
- *    parens should be in matching pairs
- *    order matters   
- * 
- *   function (string)
- *     remove other characters from string 
- *      new stack
- *      let result = ''
- *      let charIndex = 0
- *    for (let c in string)
- *      stack.push(c)
- *      charIndex ++
- *      if ')' 
- *        location = charIndex
-*  
- *
- *      
- *
- *   
- * 
- *    
- */
+    if(c === '('){
+      stack.push(index);
+    } else {
+      if(c === ')'){
+        if(stack.isEmpty()){
+          console.log(`Character at index ${index} is an invalid closing parentheses.`);
+          return false;
+        } else {
+          stack.pop();
+        }
+      }
+    }
+    index++;
+  }
+  if(!stack.isEmpty()){
+    console.log(`Character at index ${stack.pop()} is an extra opening parentheses.`);
+    return false;
+  } else {
+    return true;
+  }
+}
+module.exports = validParentheses;
+
+validParentheses('(()');
+validParentheses('(()))');
+validParentheses('( 8 + 5 ) + ( 9 + 5 ))');
